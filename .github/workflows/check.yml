@@ -1,0 +1,23 @@
+name: CI
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check user github branch repo
+        id: check-github-branch
+        uses: goshencollege/validate-branch-name@v1.0.1
+        with:
+          pattern: desktop
+          
+          
+      - name: Check required files
+        id: check_required_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "github-desktop-screenshot.png"
